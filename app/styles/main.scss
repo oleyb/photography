@@ -1,0 +1,63 @@
+$icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/";
+
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap";
+
+body, html {
+   height: 100%;
+   font-family: "Amatic SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
+   font-size: 26px;
+   color: #333;
+}
+
+.navbar-default {
+    background-color: white;
+    border:0;
+}
+
+.navbar-default .navbar-brand {
+    color: #333;
+    font-size: 32px;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #333 !important;
+}
+
+.navbar-static-top {
+  margin-bottom: 0px;
+}
+
+.photo-container {
+    height: 100%;
+    overflow-x: scroll;
+    padding-top: 50px;
+}
+
+.photo-scroller {
+    height: 100%;
+    width: 4000px;
+    overflow: hidden;
+}
+
+.photo-list img {
+    height: 100%;
+    display: inline;
+    margin-left: 5px;
+}
+
+.photo-list {
+    height: 100%;
+    display: inline;
+    text-decoration: none;
+    padding-left: 5px;
+}
+
+.photo-list li {
+    height: 100%;
+    display: inline;
+    list-style-type: none;
+}
+
+.inline {
+  display: inline;
+}
