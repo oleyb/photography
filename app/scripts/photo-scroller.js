@@ -1,4 +1,5 @@
 /** @jsx React.DOM */
+'use strict';
 
 var React = require('react');
 
@@ -13,13 +14,10 @@ var PhotoScroller = React.createClass({
   },
 
   resizePhotoList: function() {
-    var totalWidth = 0;
-
-    $(".photo-list").children().each(function() {
-          totalWidth = totalWidth + $(this).width();
-    });
-
-    $('.photo-scroller').width(totalWidth);
+    $('.photo-scroller').width(
+      $(".photo-list").children().toArray().reduce(
+        function(prev, next, index){ return (index === 1 ? prev.offsetWidth : prev) + next.offsetWidth + 5;
+    }));
   },
 
   componentDidMount: function() {
@@ -34,26 +32,26 @@ var PhotoScroller = React.createClass({
 
     window.addEventListener('DOMMouseScroll', scrollHandler, false);
     window.addEventListener('mousewheel', scrollHandler, false);
-
-    this.resizePhotoList();
   },
 
   componentWillReceiveProps: function(newProps) {
-    //this.props = newProps;
+    (this.props.params.albumName !== newProps.params.albumName) && $('.photo-container').scrollLeft(0);
   },
 
-  componentDidUpdate: function(prevProps, prevState) {
-    this.resizePhotoList();
+  buildPhotoList: function () {
+    return (
+        this.state.photos.map(function(photo){
+          return <li><img src={photo} onLoad={this.resizePhotoList} /></li>
+        }.bind(this))
+    );
   },
 
   render: function () {
     return (
-      <div className="container-fluid photo-container">
+      <div className=" photo-container">
         <div className="photo-scroller">
           <ul className="photo-list">
-            {this.state.photos.map(function(photo){
-              return <li><img src={photo} /></li>;
-            })}
+            {this.buildPhotoList()}
           </ul>
         </div>
       </div>

@@ -6,7 +6,7 @@ var React = require('react'),
     Route = require('react-router').Route,
     DefaultRoute = require('react-router').DefaultRoute,
     App = require('./app'),
-    PhotoScroller = require('./photo-scroller')
+    PhotoScroller = require('./photo-scroller');
 
 module.exports = (
   <Routes location='hash'>
