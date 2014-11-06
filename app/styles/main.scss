@@ -9,7 +9,7 @@ body, html {
    color: #333;
 }
 
-.navbar-default {
+.navbar {
     background-color: white;
     border:0;
 
@@ -18,8 +18,19 @@ body, html {
         font-size: 32px;
     }
 
-    .navbar-nav>li>a {
+    li {
+      .active {
+        text-decoration: underline !important;
+      }
+
+      a {
         color: #333 !important;
+        font-size: 24px;
+
+        &:hover {
+          color: #6B6B6B !important;
+        }
+      }
     }
 }
 
@@ -39,33 +50,25 @@ body, html {
     overflow: hidden;
 }
 
-.photo-list img {
-    height: 100%;
-    display: inline;
-    margin-left: 5px;
-}
-
 .photo-list {
     height: 100%;
     display: inline;
     text-decoration: none;
     padding-left: 5px;
-}
 
-.photo-list li {
-    height: 100%;
-    display: inline;
-    list-style-type: none;
+    img {
+        height: 100%;
+        display: inline;
+        margin-left: 5px;
+    }
+
+    li {
+        height: 100%;
+        display: inline;
+        list-style-type: none;
+    }
 }
 
 .inline {
   display: inline;
-}
-
-.navbar {
-  li {
-    a {
-      font-size: 24px;
-    }
-  }
 }
