@@ -56,13 +56,11 @@ var PhotoScroller = React.createClass({
   resizePhotoList: function() {
     $('.photo-scroller').width(
       $(".photo-list").children().toArray().reduce(
-        function(prev, next, index){ return (index === 1 ? prev.offsetWidth : prev) + next.offsetWidth + 5;
-    }));
+        function(prev, next, index){ return (index === 1 ? prev.offsetWidth : prev) + next.offsetWidth;
+    }) + 10);
   },
 
   buildPhotoList: function () {
-    
-
     return (
         this.state.album.photos.map(function(photo){
           return <li key={photo}><img src={this.props.serverUrl + this.state.album.dir + '/' + photo} onLoad={this.resizePhotoList} /></li>
