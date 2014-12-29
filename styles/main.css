@@ -6786,6 +6786,12 @@ body, html {
   overflow-x: scroll;
   padding-top: 50px;
 }
+.photo-container .home-photo {
+  display: block;
+  margin: 0px auto;
+  height: 100%;
+  padding: 24px;
+}
 
 .photo-scroller {
   height: 100%;
