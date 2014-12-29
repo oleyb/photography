@@ -57,7 +57,7 @@ var PhotoScroller = React.createClass({
     $('.photo-scroller').width(
       $(".photo-list").children().toArray().reduce(
         function(prev, next, index){ return (index === 1 ? prev.offsetWidth : prev) + next.offsetWidth;
-    }) + 10);
+    }) + 5);
   },
 
   buildPhotoList: function () {

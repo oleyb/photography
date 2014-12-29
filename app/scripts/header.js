@@ -24,7 +24,9 @@ var Header = React.createClass({
             <div className="navbar-collapse collapse">
               <ul className="nav navbar-nav">
                 {this.props.albumNames.map(function(album){
-                  return <li key={album.dir}><Link to="album" params={{albumName: album.dir}}>{album.name}</Link></li>;
+                  if(!album.hidden)
+                    return <li key={album.dir}><Link to="album" params={{albumName: album.dir}}>{album.name}</Link></li>;
+                  else return;
                 })}
               </ul>
             </div>
