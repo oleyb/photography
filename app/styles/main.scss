@@ -42,6 +42,13 @@ body, html {
     height: 100%;
     overflow-x: scroll;
     padding-top: 50px;
+
+    .home-photo {
+      display:block;
+      margin: 0px auto;
+      height: 100%;
+      padding: 24px;
+    }
 }
 
 .photo-scroller {
