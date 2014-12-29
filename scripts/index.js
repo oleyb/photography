@@ -39,14 +39,13 @@ var App = React.createClass({displayName: 'App',
   },
   componentDidMount: function() {
     $.get(this.state.url + this.state.dataUrl, function(data) {
-      console.log("LOL");
       this.setState({portfolio: JSON.parse(data)});
     }.bind(this));
   },
   render: function () {
     return (
       React.createElement("div", {className: "inline"}, 
-        React.createElement(Header, {albumNames: this.state.portfolio.albums.map(function(album){return {name: album.name, dir: album.dir};})}), 
+        React.createElement(Header, {albumNames: this.state.portfolio.albums.map(function(album){return {name: album.name, dir: album.dir, hidden:album.hidden};})}), 
         React.createElement(this.props.activeRouteHandler, {serverUrl: this.state.url, albums: this.state.portfolio.albums})
       )
     );
@@ -82,7 +81,9 @@ var Header = React.createClass({displayName: 'Header',
             React.createElement("div", {className: "navbar-collapse collapse"}, 
               React.createElement("ul", {className: "nav navbar-nav"}, 
                 this.props.albumNames.map(function(album){
-                  return React.createElement("li", {key: album.dir}, React.createElement(Link, {to: "album", params: {albumName: album.dir}}, album.name));
+                  if(!album.hidden)
+                    return React.createElement("li", {key: album.dir}, React.createElement(Link, {to: "album", params: {albumName: album.dir}}, album.name));
+                  else return;
                 })
               )
             )
@@ -154,7 +155,7 @@ var PhotoScroller = React.createClass({displayName: 'PhotoScroller',
     $('.photo-scroller').width(
       $(".photo-list").children().toArray().reduce(
         function(prev, next, index){ return (index === 1 ? prev.offsetWidth : prev) + next.offsetWidth;
-    }) + 10);
+    }) + 5);
   },
 
   buildPhotoList: function () {
